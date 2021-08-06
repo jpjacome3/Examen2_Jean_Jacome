@@ -3,6 +3,7 @@ package test;
 import dominio.Jubilado;
 import dominio.JubiladoDiscapacidad;
 import dominio.JubiladoPatronal;
+
 import dominio.JubiladoVejez;
 import java.util.Scanner;
 
@@ -10,7 +11,7 @@ public class TestJubilacion {
 
     public static void main(String[] args) {
         Scanner leer = new Scanner(System.in);
-        Jubilado jubilados[] = new Jubilado[2];
+        Jubilado jubilados[] = new Jubilado[3];
         String nombres;
         double salario;
         String cedula;
@@ -20,6 +21,7 @@ public class TestJubilacion {
         int op;
         int opcion;
         int t = 0;
+        int i=0;
         do {
             t++;
             System.out.println("|Jubilacion|");
@@ -41,8 +43,9 @@ public class TestJubilacion {
                     aporte = leer.nextDouble();
                     porcentaje = porcentaje(aporte);
                     
-                    jubilados[0] = new JubiladoVejez(nombres, cedula, salario, aporte, porcentaje);
-                    jubilados[0].jubilacion();
+                    jubilados[i] = new JubiladoVejez(nombres, cedula, salario, aporte, porcentaje);
+                    jubilados[i].jubilacion();
+                    i++;
                     break;
 
                 case 2:
@@ -58,8 +61,9 @@ public class TestJubilacion {
                     System.out.println("Porcentaje de discapacidad:");
                     double discapacidad = leer.nextDouble();
                     
-                    jubilados[1] = new JubiladoDiscapacidad(nombres, cedula, salario, aporte, porcentaje, discapacidad);
-                    jubilados[1].jubilacion();
+                    jubilados[i] = new JubiladoDiscapacidad(nombres, cedula, salario, aporte, porcentaje, discapacidad);
+                    jubilados[i].jubilacion();
+                    i++;
                     break;
 
                 case 3:
@@ -76,18 +80,18 @@ public class TestJubilacion {
                     double inflacion = leer.nextDouble();
                     System.out.println("La empresa es de tipo: \n1.Publica\n2.Privada\n");
                     System.out.println("opcion: ");
-                    opcion = leer.nextInt();
-                    
-                    jubilados[2] = new JubiladoPatronal(nombres, cedula, salario, aporte, porcentaje, inflacion, opcion);
-                    jubilados[2].jubilacion();
+                    opcion = leer.nextInt();                  
+                    jubilados[i] = new JubiladoPatronal(nombres, cedula, salario, aporte, porcentaje, inflacion, opcion);
+                    jubilados[i].jubilacion();
+                    i++;
                     break;
 
                 case 4:
                     System.out.println("|Reporte de Pensionistas|");
-                    
-                    jubilados[0].mostrarDatos();
-                    jubilados[1].mostrarDatos();
-                    jubilados[2].mostrarDatos();break;
+                    for(Jubilado jubilado:jubilados ){
+                        jubilado.mostrarDatos();
+                    }break;
+
 
                 case 5:
                     t = 100;
