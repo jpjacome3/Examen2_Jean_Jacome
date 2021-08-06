@@ -3,39 +3,40 @@ package dominio;
 
 public class JubiladoPatronal extends Jubilado{
     
-    private double jubilacion;
-    private int porcentaje;
-    private int inflacion;
-    private String empresa;
-    private int op;
+    private double jubilacion=0;
+    private double inflacion=0;
+    private String empresa=null;
+    private int opcion=0;
     
-    public JubiladoPatronal(String nombres, String cedula, double salario, int aporte, int porcentaje,int inflacion,String empresa,int op) {
+    public JubiladoPatronal(String nombres, String cedula, double salario, double aporte, int porcentaje,double inflacion,int opcion) {
 
         super(nombres, cedula, salario, aporte,porcentaje);
         this.inflacion=inflacion;
-        this.empresa= empresa;
-        this.op=op;
+        this.opcion=opcion;
         
     }
-    
+
     @Override
-    public void jubilacion(){
- 
-        double PI = (this.porcentaje* 400) / 100;
-        double aux=PI+(this.inflacion*getSalario())/100;
-        
-        
-        if(op==1){
-            this.jubilacion = aux+(aux*5)/100;
-    }
-        else{
-            this.jubilacion =aux+(aux*10)/100;
+    public void jubilacion() {
+
+        double PI = (getPorcentaje() * 400) / 100;
+        double aux = PI + (this.inflacion * getSalario()) / 100;
+
+        if (this.opcion == 1) {
+            this.empresa = "Publica";
+            this.jubilacion = aux + (aux * 5) / 100;
+        }
+        if(this.opcion==2){
+            this.empresa = "Privada";
+            this.jubilacion = aux + (aux * 10) / 100;
         }
     }
 
     @Override
-    public String mostrarDatos() {
-        return "Nombre: " + getNombres() + "\nCedula: " + getCedula() + "\nSalario: " + getSalario() +"Empresa: "+empresa+ "\nNumero de años aportados: " + getAporte() +"\nSu Jubilacion es de: " + jubilacion;
+    public void mostrarDatos() {
+        System.out.println("---------------------------------------------------------------------------------");
+        System.out.println("\nNombre: " + getNombres() + "\nCedula: " + getCedula() + "\nSalario: " + getSalario() +"Empresa: "+empresa+ "\nNumero de años aportados: " + getAporte() +"\nSu Jubilacion es de: " + jubilacion+"\n");
+        System.out.println("---------------------------------------------------------------------------------");
     }
     
 }

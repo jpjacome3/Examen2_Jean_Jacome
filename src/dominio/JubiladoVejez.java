@@ -10,14 +10,15 @@ package dominio;
  * @author JEAN_PIERRE
  */
 public class JubiladoVejez extends Jubilado{
-    private double jubilacion;
+    private double jubilacion=0;
     
     
     
-    public JubiladoVejez(String nombres, String cedula, double salario,int aporte, int porcentaje){
+    public JubiladoVejez(String nombres, String cedula, double salario,double aporte, int porcentaje){
         super(nombres,cedula,salario,aporte,porcentaje);
         
     }
+
     
     @Override
     public void jubilacion(){
@@ -26,8 +27,10 @@ public class JubiladoVejez extends Jubilado{
     }
  
     @Override
-    public String mostrarDatos(){
-        return "Nombre: "+getNombres()+"\nCedula: "+getCedula()+"\nSalario: "+getSalario()+"\nNumero de años aportados: "+getAporte()+"\nSu Jubilacion es de: "+jubilacion;
+    public void mostrarDatos(){
+        System.out.println("---------------------------------------------------------------------------------");
+        System.out.println("\nNombre: "+getNombres()+"\nCedula: "+getCedula()+"\nSalario: "+getSalario()+"\nNumero de años aportados: "+getAporte()+"\nSu Jubilacion es de: "+jubilacion+"\n");
+        System.out.println("---------------------------------------------------------------------------------");
     }
     
 }

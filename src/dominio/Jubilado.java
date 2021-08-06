@@ -3,15 +3,15 @@ package dominio;
 
 
 public class Jubilado {
-    private String nombres;
-    private String cedula;
-    private double salario;
-    private int aporte;
-    private int porcentaje;
-    private double jubilacion;
+    private String nombres=null;
+    private String cedula=null;
+    private double salario=0;
+    private double aporte=0;
+    private int porcentaje=0;
+    private double jubilacion=0;
 
     
-    public Jubilado(String nombres, String cedula, double salario, int aporte,int porcentaje) {
+    public Jubilado(String nombres, String cedula, double salario, double aporte,int porcentaje) {
         this.nombres = nombres;
         this.cedula = cedula;
         this.salario = salario;
@@ -32,7 +32,7 @@ public class Jubilado {
         return salario;
     }
 
-    public int getAporte() {
+    public double getAporte() {
         return aporte;
     }
 
@@ -49,8 +49,10 @@ public class Jubilado {
 
     
 
-    public String mostrarDatos(){
-        return "Nombre: "+nombres+"\nCedula: "+cedula+"\nSalario: "+salario+"\nNumero de años aportados: "+aporte+"Jubilacion: "+jubilacion;
+    public void mostrarDatos(){
+        System.out.println("---------------------------------------------------------------------------------");
+        System.out.println("\nNombre: "+nombres+"\nCedula: "+cedula+"\nSalario: "+salario+"\nNumero de años aportados: "+aporte+"Jubilacion: "+jubilacion+"\n");
+        System.out.println("---------------------------------------------------------------------------------");
     }
     
             
